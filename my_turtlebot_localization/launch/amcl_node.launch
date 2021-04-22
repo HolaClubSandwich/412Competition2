@@ -1,0 +1,8 @@
+<launch>
+    <!-- Map Server -->
+    <include file="$(find my_turtlebot_gmapping)/launch/map_server_node.launch" />
+
+    <!-- AMCL Server -->
+    <include file="$(find my_turtlebot_localization)/launch/amcl.launch" />
+
+</launch>
