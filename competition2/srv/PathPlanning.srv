@@ -1,0 +1,6 @@
+# request
+string location
+---
+# response
+string message
+bool result
