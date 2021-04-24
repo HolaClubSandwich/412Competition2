@@ -130,7 +130,11 @@ time_elapsed = (task_time - start_time)
 print(time_elapsed)
 start_time = task_time
 # solve bandit problem
-bandit_pose = yaml.safe_load(open(yaml_path))["C_centre"]
+print("teleporting to bandit room")
+bandit_room_position = val_list.index(next_room)
+bandit_room_name = key_list[bandit_room_position]
+
+bandit_pose = yaml.safe_load(open(yaml_path))[bandit_room_name + '_centre']
 location_client.send_request(bandit_pose["position"]["x"], bandit_pose["position"]["y"], 180)
 where, maze_room = solve_bandit()
 
@@ -140,6 +144,7 @@ print(time_elapsed)
 start_time = task_time
 
 # solve maze problem
+print("teleporting to maze room")
 maze_room_position = val_list.index(maze_room)
 maze_room_name = key_list[maze_room_position]
 maze_pose = yaml.safe_load(open(yaml_path))[maze_room_name]
@@ -156,6 +161,7 @@ print(time_elapsed)
 
 start_time = task_time
 last_room_position = val_list.index(last_room)
+print("teleporting to last room")
 last_room_name = key_list[last_room_position]
 last_pose = yaml.safe_load(open(yaml_path))[last_room_name]
 location_client.send_request(last_pose["position"]["x"], last_pose["position"]["y"], 0)

@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <sdf version='1.7'>
-  <model name='lobby'>
+  <model name='end'>
     <link name='link_1'>
       <inertial>
         <mass>1</mass>
@@ -18,7 +18,8 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://world1/lobby/mesh.dae</uri>
+            <!-- <uri>model://world1/end/mesh.dae</uri> -->
+            <uri>/home/user/catkin_ws/src/competition2/models/end/mesh.dae</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -32,7 +33,8 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://world1/lobby/mesh.dae</uri>
+            <!-- <uri>model://world1/end/mesh.dae</uri> -->
+            <uri>/home/user/catkin_ws/src/competition2/models/end/mesh.dae</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>

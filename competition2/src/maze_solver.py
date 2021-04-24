@@ -120,6 +120,8 @@ class MazeSlover():
                 self.publish_once_in_cmd_vel()
                 # self.stop_bot()
                 # self.ctrl_c = True
+            i += 1
+            print(i)
             self.rate.sleep()
 
         who, next_room = self.read_sign()
@@ -149,5 +151,6 @@ class MazeSlover():
 if __name__ == "__main__":
     rospy.init_node('maze_test')
     # rospy.wait_for_service('/odom_position')
-    test = MazeSlover(6.666)
-    test.read_sign()
+    test = MazeSlover()
+    test.move()
+    # test.read_sign()
