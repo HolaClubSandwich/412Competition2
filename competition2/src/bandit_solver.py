@@ -89,7 +89,7 @@ def solve_bandit():
             epoch = epoch*2
         else:
             break
-    return where
+    return where, next_room
 
 
 

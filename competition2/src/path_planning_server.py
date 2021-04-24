@@ -11,7 +11,7 @@ class PathPlanningServer():
 
     def __init__(self):
         self.server = rospy.Service('/path_palnning_server', PathPlanning, self.my_callback)
-        self.goal_pub = rospy.Publisher('/move_base/goal', MoveBaseActionGoal)
+        self.goal_pub = rospy.Publisher('/move_base/goal', MoveBaseActionGoal, queue_size=1)
         self._response = PathPlanningResponse()
         self.goal = MoveBaseActionGoal()
         self.location = None

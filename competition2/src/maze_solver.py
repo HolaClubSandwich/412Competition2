@@ -5,11 +5,12 @@ import time
 from geometry_msgs.msg import Twist
 from turtlebot_laser_class import Laser
 from turtlebot_odom_client import OdomPositionClient
+from maze_answer_client import MazeAnswerClient
 from ocr_server import OCRDetect
 
 class MazeSlover():
 
-    def __init__(self, end_x):
+    def __init__(self):
         self.turtlebot_vel_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
         self.cmd = Twist()
         self.ctrl_c = False
@@ -19,8 +20,8 @@ class MazeSlover():
         self.front = None
         self.left = None
         self.right = None
-        self.end_x = end_x
-        self.odom_position_client = OdomPositionClient()
+        self.passcode = None
+        # self.odom_position_client = OdomPositionClient()
         self.ocr = OCRDetect()
         rospy.on_shutdown(self.shutdownhook)
 
@@ -50,10 +51,10 @@ class MazeSlover():
         self.left = regions['left']
         self.right = regions['right']
 
-    def check_position(self):
-        result = self.odom_position_client.send_request()
-        if (result.position > self.end_x):
-            return True
+    # def check_position(self):
+    #     result = self.odom_position_client.send_request()
+    #     if (result.position > self.end_x):
+    #         return True
 
     def stop_bot(self):
         self.cmd.linear.x = 0.0
@@ -121,14 +122,32 @@ class MazeSlover():
                 # self.ctrl_c = True
             self.rate.sleep()
 
+        who, next_room = self.read_sign()
+        return who, next_room
+
     def read_sign(self):
         detect_text = self.ocr.read_sign('/home/user/catkin_ws/src/competition2/models/end/one.png')
-        
+        print(detect_text)
+        lines = detect_text.split("\n")
+        for line in lines:
+            if "Passcode" in line:
+                words = line.split(":")
+                self.passcode = int(words[1].strip())
+        print("passcode: " + str(self.passcode))
+
+        maze_client = MazeAnswerClient(self.passcode)
+        result = maze_client.send_request()
+        next_room = result.room
+        who = result.who
+        # print(result)
+        # print(who)
+        return who, next_room
+
     
 
     
 if __name__ == "__main__":
     rospy.init_node('maze_test')
-    rospy.wait_for_service('/odom_position')
+    # rospy.wait_for_service('/odom_position')
     test = MazeSlover(6.666)
-    test.move()
+    test.read_sign()

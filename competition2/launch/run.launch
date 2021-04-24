@@ -1,5 +1,5 @@
 <launch>
-    <include file="$(find competition2)/launch/start_world.launch"/>
+    <include file="$(find competition2)/launch/start_test_world.launch"/>
     <include file="$(find competition2)/launch/start_robot.launch"/>
     <include file="$(find competition2)/launch/competition2_server.launch"/>
     <include file="$(find my_turtlebot_path_planning)/launch/move_base_node.launch"/>

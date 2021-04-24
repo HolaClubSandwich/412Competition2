@@ -5,12 +5,12 @@ import numpy as np
 from ocr_server import OCRDetect
 
 print("hello world")
-ocrDetect = OCRDetect('/home/user/catkin_ws/src/competition2/models/lobby/one.png')
+ocrDetect = OCRDetect()
 
 
 # img = cv2.imread('/home/user/catkin_ws/src/competition2/models/map/one1.png', 1) #, cv2.IMREAD_GRAYSCALE)
 
-detect_text = ocrDetect.read_sign()
+detect_text = ocrDetect.read_sign('/home/user/catkin_ws/src/competition2/models/lobby/one.png')
 
 # img = cv2.resize(img, (500, 500))
 # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
