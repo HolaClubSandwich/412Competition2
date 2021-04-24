@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+
 import rospy
 from std_srvs.srv import Empty, EmptyResponse 
 from competition2.srv import BanditStep, BanditStepResponse, BanditAnswer, BanditAnswerResponse
