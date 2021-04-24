@@ -5,6 +5,7 @@ import time
 from geometry_msgs.msg import Twist
 from turtlebot_laser_class import Laser
 from turtlebot_odom_client import OdomPositionClient
+from ocr_server import OCRDetect
 
 class MazeSlover():
 
@@ -20,6 +21,7 @@ class MazeSlover():
         self.right = None
         self.end_x = end_x
         self.odom_position_client = OdomPositionClient()
+        self.ocr = OCRDetect()
         rospy.on_shutdown(self.shutdownhook)
 
 
@@ -118,6 +120,10 @@ class MazeSlover():
                 # self.stop_bot()
                 # self.ctrl_c = True
             self.rate.sleep()
+
+    def read_sign(self):
+        detect_text = self.ocr.read_sign('/home/user/catkin_ws/src/competition2/models/end/one.png')
+        
     
 
     
