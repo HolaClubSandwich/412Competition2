@@ -6,6 +6,7 @@ import random
 from ocr_server import OCRDetect
 from bandit_step_client import BanditStepClient
 from bandit_answer_client import BanditAnswerClient
+import collections
 
 random.seed(0)
 
@@ -54,6 +55,15 @@ def find_opt_arm(passcode, number_arms, epoch):
     print(Q_table)
     best_arm = int(np.argmax(Q_table))+1
     print("best arm: "+ str(best_arm))
+    dictionary = {}
+    for i in range(Q_table.shape[0]):
+        dictionary[i+1] = Q_table[i]
+    
+    ranking = {k: v for k, v in sorted(dictionary.items(), key=lambda item: item[1], reverse=True)}
+    ranking_string = ""
+    for r in ranking.keys():
+        ranking_string += str(r)+" "
+    print("arm ranking: " + ranking_string)
     return best_arm
 
 

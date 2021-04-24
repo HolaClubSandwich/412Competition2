@@ -24,4 +24,14 @@ if __name__ == "__main__":
     client = SetLocationClient()
     # result = client.send_request(-0.6, -8.1, -180)
     # for location3
-    result = client.send_request(5, -6, 180)
+#     C:
+#   position:
+#     x: -1.492526754245629
+#     y: -15.458635248810356
+#     z: 0.0
+#   orientation:
+#     x: 0.0
+#     y: 0.0
+#     z: -0.06459642077176161
+#     w: 0.9979114702334458
+    result = client.send_request(11.46666666157958, -11.362722952220462, -0.06459642077176161)
