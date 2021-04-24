@@ -6,6 +6,18 @@ import cv2
 from set_location import SetLocationClient
 from bandit_solver import solve_bandit
 from shapes_answer_client import ShapesAnswerClient
+from movement import Movement
+from path_planning_client import PathPlanningClient
+
+
+def localize():
+    
+
+
+def main():
+    pass
+
+
 
 rospy.init_node('set_location_client')
 rospy.wait_for_service('/gazebo/set_model_state')

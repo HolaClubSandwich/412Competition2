@@ -6,18 +6,18 @@ from pytesseract import image_to_string
 
 class OCRDetect():
 
-    def __init__(self, path):
-        self.path = path
+    def __init__(self):
+        pass
 
-    def read_sign(self):
-        img = cv2.imread(self.path, 1)
+    def read_sign(self, path):
+        img = cv2.imread(path, 1)
         detect_text = image_to_string(img)
         # print(detect_text)
 
         return detect_text
 
-    def read_map(self):
-        img = cv2.imread(self.path, cv2.IMREAD_GRAYSCALE)
+    def read_map(self, path):
+        img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
 
         img[img != 255] = 0
 
