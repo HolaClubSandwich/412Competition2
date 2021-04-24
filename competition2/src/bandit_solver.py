@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import rospy
-import time
 import numpy as np
 import random
 from ocr_server import OCRDetect
@@ -12,8 +11,8 @@ random.seed(0)
 
 # read the picture for passcode and info
 def get_info():
-    ocrDetect = OCRDetect('/home/user/catkin_ws/src/competition2/models/bandit/one.png')
-    detect_text = ocrDetect.read_sign()
+    ocrDetect = OCRDetect()
+    detect_text = ocrDetect.read_sign('/home/user/catkin_ws/src/competition2/models/bandit/one.png')
     lines = detect_text.split("\n")
     passcode = 0
     number_arms = 0

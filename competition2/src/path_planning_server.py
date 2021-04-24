@@ -19,7 +19,7 @@ class PathPlanningServer():
 
     def my_callback(self, request):
         self.location = request.location
-        path = '/home/user/catkin_ws/src/competition2/src/locations.yaml'
+        path = '/home/user/catkin_ws/src/competition2/params/locations.yaml'
         pose = yaml.safe_load(open(path))[self.location]
         self.curr_goal.position.x = pose["position"]["x"]
         self.curr_goal.position.y = pose["position"]["y"]
