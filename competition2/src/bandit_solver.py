@@ -70,11 +70,12 @@ def find_opt_arm(passcode, number_arms, epoch):
 def solve_bandit():
     passcode, number_arms = get_info()
     # ## for testing purpose
-    # passcode = 42
-    # number_arms=2
+    # passcode = 23
+    # number_arms=5
     print("passcode: " + str(passcode))
     print("number_arms: " + str(number_arms))
-    epoch = 10**number_arms
+    # epoch = 10**number_arms
+    epoch = number_arms * 100
     while True:
         best_arm = find_opt_arm(passcode, number_arms, epoch)
         # get the next room number
