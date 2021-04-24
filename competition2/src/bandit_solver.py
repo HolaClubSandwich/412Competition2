@@ -90,9 +90,10 @@ def solve_bandit():
             epoch = epoch*2
         else:
             break
+    return where
 
 
 
 
 if __name__ == "__main__":
-    solve_bandit()
+    where = solve_bandit()
